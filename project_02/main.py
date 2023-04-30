@@ -1,19 +1,7 @@
 from fastapi import FastAPI
+from data import cursos
 
 app = FastAPI()
-
-cursos = {
-    1: {
-        'titulo': 'Pro',
-        'aulas': 112,
-        'horas': 58
-    },
-    2: {
-        'titulo': 'Algoritmo',
-        'aulas': 87,
-        'horas': 67
-    }
-}
 
 
 @app.get('/')
