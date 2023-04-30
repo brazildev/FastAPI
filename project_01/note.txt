@@ -1,2 +1,0 @@
-pip install fastapi==0.75.2
-pip install uvicorn==0.17.6
