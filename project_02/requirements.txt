@@ -1,0 +1,3 @@
+#pip install fastapi==0.75.2
+#pip install uvicorn==0.17.6
+#pip install gunicorn==20.1.0
