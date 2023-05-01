@@ -5,6 +5,7 @@ from fastapi import status
 from models import Curso
 from fastapi import Response
 from fastapi import Path
+from typing import Optional
 
 app = FastAPI()
 
@@ -61,6 +62,16 @@ async def delete_curso(curso_id: int):
     else:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f'Não existe um curso com ID {curso_id}.')
+
+
+@app.get('/calculadora')
+async def calculadora(n1: float, n2: float, n3: Optional[float] = None):
+    """ http://localhost:8000/calculadora?n1=1&n2=3&n3=4
+    """
+    soma = n1 + n2
+    if n3:
+        soma = soma + n3
+    return {'Soma:': soma}
 
 
 if __name__ == '__main__':
