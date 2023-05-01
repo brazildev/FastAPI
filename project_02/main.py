@@ -4,6 +4,7 @@ from fastapi import HTTPException
 from fastapi import status
 from models import Curso
 from fastapi import Response
+from fastapi import Path
 
 app = FastAPI()
 
@@ -19,7 +20,11 @@ async def get_cursos():
 
 
 @app.get('/cursos/{curso_id}')
-async def get_curso(curso_id: int):
+async def get_curso(curso_id: int = Path(default=None,
+                                         title='ID do curso',
+                                         description='Deve ser 1 ou 2',
+                                         ge=1, le=2)
+                    ):
     try:
         curso = cursos[curso_id]
         return curso
