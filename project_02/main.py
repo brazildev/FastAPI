@@ -23,7 +23,9 @@ async def raiz():
     return {"msg": "FastAPI"}
 
 
-@app.get('/cursos')
+@app.get('/cursos',
+         summary='Retorna os cursos.',  # http://localhost:8000/docs#/default/get_cursos_cursos_get
+         description='Retorna todos os cursos.')  # http://localhost:8000/redoc
 async def get_cursos():
     return cursos
 
