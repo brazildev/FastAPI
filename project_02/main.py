@@ -53,7 +53,8 @@ async def get_curso(
             detail='Não encontrado ID do Curso.')
 
 
-@app.post('/cursos', status_code=status.HTTP_201_CREATED)
+@app.post('/cursos', status_code=status.HTTP_201_CREATED,
+          response_model=Curso)  # http://localhost:8000/docs#/default/post_curso_cursos_post
 async def post_curso(curso: Curso):
     next_id: int = len(cursos) + 1
     cursos[next_id] = curso
