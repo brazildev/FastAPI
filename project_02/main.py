@@ -1,6 +1,6 @@
 from data import cursos
 from models import Curso
-from typing import Optional, Any
+from typing import Optional, Any, Dict, List
 from fastapi import FastAPI
 from fastapi import HTTPException
 from fastapi import status
@@ -25,7 +25,10 @@ async def raiz():
 
 @app.get('/cursos',
          summary='Retorna os cursos.',  # http://localhost:8000/docs#/default/get_cursos_cursos_get
-         description='Retorna todos os cursos.')  # http://localhost:8000/redoc
+         description='Retorna todos os cursos.',  # http://localhost:8000/redoc
+         # response_model=Dict[int, Curso]
+         response_model=List[Curso]
+         )
 async def get_cursos():
     return cursos
 
