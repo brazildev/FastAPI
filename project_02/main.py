@@ -6,7 +6,7 @@ from fastapi import HTTPException
 from fastapi import status
 from fastapi import Response
 from fastapi import Path
-
+from fastapi import Query
 
 app = FastAPI()
 
@@ -66,8 +66,12 @@ async def delete_curso(curso_id: int):
 
 
 @app.get('/calculadora')
-async def calculadora(n1: float, n2: float, n3: Optional[float] = None):
-    """ http://localhost:8000/calculadora?n1=1&n2=3&n3=4
+async def calculadora(
+        n1: float = Query(default=None, gt=4.0),
+        n2: float = Query(default=None, gt=9.0),
+        n3: Optional[float] = None
+):
+    """ http://localhost:8000/calculadora?n1=5&n2=10&n3=4
     """
     soma = n1 + n2
     if n3:
