@@ -11,7 +11,11 @@ from fastapi import Header
 from fastapi import Depends
 from db import fake_db
 
-app = FastAPI()
+app = FastAPI(
+    title='API GGS',
+    version='Alfa',
+    description='Descrição: API para estudo.'
+)  # http://localhost:8000/docs
 
 
 @app.get('/')
