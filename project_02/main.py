@@ -7,6 +7,7 @@ from fastapi import status
 from fastapi import Response
 from fastapi import Path
 from fastapi import Query
+from fastapi import Header
 
 app = FastAPI()
 
@@ -67,6 +68,7 @@ async def delete_curso(curso_id: int):
 
 @app.get('/calculadora')
 async def calculadora(
+        x_ggs: str = Header(default=None),  # key = x-ggs in Headers
         n1: float = Query(default=None, gt=4.0),
         n2: float = Query(default=None, gt=9.0),
         n3: Optional[float] = None
@@ -76,6 +78,7 @@ async def calculadora(
     soma = n1 + n2
     if n3:
         soma = soma + n3
+    print(f'X-GGS: {x_ggs}')
     return {'Soma:': soma}
 
 
