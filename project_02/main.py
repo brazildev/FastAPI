@@ -1,6 +1,6 @@
 from data import cursos
 from models import Curso
-from typing import Optional
+from typing import Optional, Any
 from fastapi import FastAPI
 from fastapi import HTTPException
 from fastapi import status
@@ -8,6 +8,8 @@ from fastapi import Response
 from fastapi import Path
 from fastapi import Query
 from fastapi import Header
+from fastapi import Depends
+from db import fake_db
 
 app = FastAPI()
 
@@ -19,6 +21,11 @@ async def raiz():
 
 @app.get('/cursos')
 async def get_cursos():
+    return cursos
+
+
+@app.get('/cursos2')
+async def get_cursos2(db: Any = Depends(fake_db)):
     return cursos
 
 
