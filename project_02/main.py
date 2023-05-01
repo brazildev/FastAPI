@@ -27,8 +27,8 @@ async def raiz():
          summary='Retorna os cursos.',  # http://localhost:8000/docs#/default/get_cursos_cursos_get
          description='Retorna todos os cursos.',  # http://localhost:8000/redoc
          # response_model=Dict[int, Curso]
-         response_model=List[Curso]
-         )
+         response_model=List[Curso],
+         response_description='Successful Response')
 async def get_cursos():
     return cursos
 
