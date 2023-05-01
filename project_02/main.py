@@ -1,11 +1,12 @@
-from fastapi import FastAPI
 from data import cursos
+from models import Curso
+from typing import Optional
+from fastapi import FastAPI
 from fastapi import HTTPException
 from fastapi import status
-from models import Curso
 from fastapi import Response
 from fastapi import Path
-from typing import Optional
+
 
 app = FastAPI()
 
